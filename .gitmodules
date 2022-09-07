@@ -1,0 +1,6 @@
+[submodule "AFMSV2_Driver/libraries/Adafruit_BusIO"]
+	path = AFMSV2_Driver/libraries/Adafruit_BusIO
+	url = https://github.com/adafruit/Adafruit_BusIO
+[submodule "AFMSV2_Driver/libraries/Adafruit_Motor_Shield_V2_Library"]
+	path = AFMSV2_Driver/libraries/Adafruit_Motor_Shield_V2_Library
+	url = https://github.com/adafruit/Adafruit_Motor_Shield_V2_Library.git
