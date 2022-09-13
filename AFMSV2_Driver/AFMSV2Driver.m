@@ -86,10 +86,10 @@ classdef AFMSV2Driver < realtime.internal.SourceSampleTime ...
         function validateInputsImpl(~, U1, U2, U3, U4)
             if isempty(coder.target)
                 % Run input validation only in Simulation
-                validateattributes(U1,{'double'},{'scalar'},'','U1');
-                validateattributes(U2,{'double'},{'scalar'},'','U2');
-                validateattributes(U3,{'double'},{'scalar'},'','U3');
-                validateattributes(U4,{'double'},{'scalar'},'','U4');
+                validateattributes(U1,{'int16'},{'scalar'},'','U1');
+                validateattributes(U2,{'int16'},{'scalar'},'','U2');
+                validateattributes(U3,{'int16'},{'scalar'},'','U3');
+                validateattributes(U4,{'int16'},{'scalar'},'','U4');
             end
         end
         
@@ -162,19 +162,19 @@ classdef AFMSV2Driver < realtime.internal.SourceSampleTime ...
                         fileNameToAdd = {'twi.c'};
                         addSourceFiles(buildInfo, fileNameToAdd, srcFilePath);
                 
-    %                 case 'sam'
-    %                     % Add SPI Library - For SAM Based
-    %                     libSAMPath = arduino.supportpkg.getSAMLibraryRoot;
-    %                     addIncludePaths(buildInfo, fullfile(libSAMPath, 'SPI','src'));
-    %                     srcFilePath = fullfile(libSAMPath, 'SPI','src');
-    %                     fileNameToAdd = {'SPI.cpp'};
-    %                     addSourceFiles(buildInfo, fileNameToAdd, srcFilePath);
-    %             
-    %                     % Add Wire / I2C Library - For SAM Based
-    %                     addIncludePaths(buildInfo, fullfile(libSAMPath, 'Wire', 'src'));
-    %                     srcFilePath= fullfile(libSAMPath, 'Wire', 'src');
-    %                     fileNameToAdd = {'Wire.cpp'};
-    %                     addSourceFiles(buildInfo, fileNameToAdd, srcFilePath);
+                    case 'sam'
+                        % Add SPI Library - For SAM Based
+                        libSAMPath = arduino.supportpkg.getSAMLibraryRoot;
+                        addIncludePaths(buildInfo, fullfile(libSAMPath, 'SPI','src'));
+                        srcFilePath = fullfile(libSAMPath, 'SPI','src');
+                        fileNameToAdd = {'SPI.cpp'};
+                        addSourceFiles(buildInfo, fileNameToAdd, srcFilePath);
+                
+                        % Add Wire / I2C Library - For SAM Based
+                        addIncludePaths(buildInfo, fullfile(libSAMPath, 'Wire', 'src'));
+                        srcFilePath= fullfile(libSAMPath, 'Wire', 'src');
+                        fileNameToAdd = {'Wire.cpp'};
+                        addSourceFiles(buildInfo, fileNameToAdd, srcFilePath);
                 
     %                 case 'samd'
     %                     % Add SPI Library - For SAMD Based

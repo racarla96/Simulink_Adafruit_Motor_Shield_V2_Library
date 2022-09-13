@@ -8,10 +8,10 @@ extern "C" {
         /* This will be run in Rapid Accelerator Mode */
         #define AFMSV2Driver_Init()         (0)
         #define AFMSV2Driver_Step(a,b,c,d)    (0)
-        #define colorSensor_Terminate()    (0)
+        #define AFMSV2Driver_Terminate()    (0)
     #else
         void AFMSV2Driver_Init(void);
-        void colorSensor_Step(float*,float*,float*,float*);
+        void AFMSV2Driver_Step(int16_t,int16_t,int16_t,int16_t);
         void AFMSV2Driver_Terminate(void);
 #endif
 #ifdef __cplusplus

@@ -1,4 +1,5 @@
 //AFMSV2Driver.cpp
+#include <Arduino.h>
 #include <math.h>
 #include "AFMSV2Driver.h" 
 #include "Adafruit_MotorShield.h"   
@@ -17,7 +18,7 @@ extern "C" void AFMSV2Driver_Init(void)
     if (!AFMS.begin()) init_f = 0; // Error, device not found
     else init_f = 1; // Device found
 } 
-extern "C" void AFMSV2Driver_Step(float U1, float U2, float U3, float U4) 
+extern "C" void AFMSV2Driver_Step(int16_t U1, int16_t U2, int16_t U3, int16_t U4) 
 { 
     if(init_f) {             /* If device is initialized properly, else return 0 */
         if (U1 > 0) M1->run(FORWARD);
