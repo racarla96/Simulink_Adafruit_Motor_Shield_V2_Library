@@ -1,2 +1,0 @@
-    AFMSV2_Driver_Motor_Test.c
-
