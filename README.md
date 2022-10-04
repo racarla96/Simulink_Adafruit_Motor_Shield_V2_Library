@@ -1,1 +1,1 @@
-# Simulink_Adafruit_Motor_Shield_V2_Library
+# Simulink_Arduino_Adafruit_Motor_Shield_V2_Library
