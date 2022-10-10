@@ -1,6 +1,7 @@
 //AFMSV2Driver.cpp
 #include <Arduino.h>
 #include <math.h>
+#include <Wire.h>
 #include "AFMSV2Driver.h" 
 #include "Adafruit_MotorShield.h"   
 
@@ -15,15 +16,17 @@ uint8_t init_f_motor;
 extern "C" void AFMSV2Driver_Init(void)
 { 
     // Initializing the device driver
-    if (!AFMS.begin()) init_f_motor = 0; // Error, device not found
+    uint16_t freq = 1600;
+    Wire1.begin();
+    if (!AFMS.begin(freq, &Wire1)) init_f_motor = 0; // Error, device not found
     else init_f_motor = 1; // Device found
 } 
 extern "C" void AFMSV2Driver_Step(int16_t U1, int16_t U2, int16_t U3, int16_t U4) 
 { 
     if(init_f_motor) {             /* If device is initialized properly, else return 0 */
-        if (U1 > 0) M1->run(FORWARD);
+        if (U1 > 0) M1->run(BACKWARD);
         else if (U1 < 0) {
-            M1->run(BACKWARD);
+            M1->run(FORWARD);
             U1 = fabs(U1);
         } else M1->run(RELEASE);
         if (U1 > 4095) U1 = 4095;
