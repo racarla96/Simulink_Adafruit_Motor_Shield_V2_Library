@@ -11,16 +11,16 @@ Adafruit_DCMotor *M2 = AFMS.getMotor(2);
 Adafruit_DCMotor *M3 = AFMS.getMotor(3);
 Adafruit_DCMotor *M4 = AFMS.getMotor(4);
 
-uint8_t init_f;
+uint8_t init_f_motor;
 extern "C" void AFMSV2Driver_Init(void)
 { 
     // Initializing the device driver
-    if (!AFMS.begin()) init_f = 0; // Error, device not found
-    else init_f = 1; // Device found
+    if (!AFMS.begin()) init_f_motor = 0; // Error, device not found
+    else init_f_motor = 1; // Device found
 } 
 extern "C" void AFMSV2Driver_Step(int16_t U1, int16_t U2, int16_t U3, int16_t U4) 
 { 
-    if(init_f) {             /* If device is initialized properly, else return 0 */
+    if(init_f_motor) {             /* If device is initialized properly, else return 0 */
         if (U1 > 0) M1->run(FORWARD);
         else if (U1 < 0) {
             M1->run(BACKWARD);
